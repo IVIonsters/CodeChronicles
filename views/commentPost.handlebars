@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <div class="post-card card mb-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">{{title}}</h5>
+                <h6 class="card-subtitle mb-0 text-muted">Posted by {{user.username}} on {{formattedDate}}</h6>
+            </div>
+            <hr>
+            <p class="card-text">{{postContent}}</p>
+        </div>
+    </div>
+
+    <div class="comment-section">
+        {{#each comments}}
+        <div class="comment-card card mb-2">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Comment by {{user.username}} on {{formattedDate}}</h6>
+                <p class="card-text">{{comments}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="add-comment mt-4">
+        <h4>Add a Comment</h4>
+        <form id="new-comment-form">
+            <div class="form-group">
+                <textarea class="form-control" id="new-comment-content" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit Comment</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/commentHandling.js"></script>
