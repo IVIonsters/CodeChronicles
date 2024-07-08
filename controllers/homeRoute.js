@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         });
         const posts = postData.map((post) => {
             let plainPost = post.get({ plain: true });
-            plainPost.formattedDate = formatDate(plainPost.created_on);
+            plainPost.formattedDate = formatDate(plainPost.creationDate);
             return plainPost;
         });
 
