@@ -89,3 +89,74 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+//Login route
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/dashboard');
+        return;
+    }
+    res.render('login', {
+        pageTitle: 'Login',
+    });
+});
+
+//Register route
+router.get('/register', (req, res) => {
+    res.render('register', {
+        pageTitle: 'register',
+    });
+});
+
+//New post route
+router.get('/newPost', withAuth, (req, res) => {
+    res.render('newPost', {
+        loggedIn: req.session.loggedIn,
+        pageTitle: 'New Post',
+    });
+});
+
+//Edit post route
+router.get('/editPost/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [{ model: User, attributes: ['username'] }],
+        });
+        if (!postData) {
+            res.status(404).json({ message: 'No Post found, incorrect ID' });
+            return;
+        }
+        const post = postData.get({ plain: true });
+        post.formattedDate = formatDate(post.created_on);
+
+        res.render('editPost', {
+            ...post,
+            loggedIn: req.session.loggedIn,
+            pageTitle: 'Edit Post',
+        });
+    } catch (error) {
+        console.error('edit post route error', error);
+        res.status(500).json(error);
+    }
+});
+
+//Comment route
+router.get('/commentPost/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                { model: User, attributes: ['username'] },
+                { model: Comment, include: [{ model: User, attributes: ['username'] }] },
+            ],
+        });
+        if (!postData) {
+            res.status(404).json({ message: 'No Post found, incorrect ID' });
+            return;
+        }
+    } catch (error) {
+        console.error('comment route error', error);
+        res.status(500).json(error);
+    }
+});
+
+module.exports = router;
