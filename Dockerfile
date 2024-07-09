@@ -16,10 +16,16 @@ RUN npm rebuild bcrypt --build-from-source
 # Copy the rest of the application code
 COPY . .
 
+COPY wait-for-it.sh /usr/src/app/wait-for-it.sh
+RUN chmod +x /usr/src/app/wait-for-it.sh
+
+# Ensure node_modules are not overwritten
+VOLUME ["/usr/src/app/node_modules"]
+
 # Expose the port your app runs on
 EXPOSE 3000
 
 # Command to run the application
-CMD ["npm", "start"]
+CMD ["/usr/src/app/wait-for-it.sh", "db:5432", "--", "npm", "start"]
 
 
