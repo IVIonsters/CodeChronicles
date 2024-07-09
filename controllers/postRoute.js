@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/auth');
-const { formateDate } = require('../../utils/date.js');
-const { Post, User } = require('../../models');
+const withAuth = require('../utils/auth.js');
+const { formateDate } = require('../utils/date.js');
+const { Post, User } = require('../models/index.js');
 
 // GET all posts for dashboard
 router.get('/', withAuth, async (req, res) => {

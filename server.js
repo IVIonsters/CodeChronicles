@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ date});
+const hbs = exphbs.create({ date });
 
 // Set up sessions with cookies
 const sessionConfig = {
@@ -26,9 +26,9 @@ const sessionConfig = {
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
-},
+    },
     resave: false,
-    saveUninitialiez: false,
+    saveUninitialized: false,
     store: new SequelizeStore({
         db: sequelize,
     }),

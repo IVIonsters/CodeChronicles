@@ -1,14 +1,16 @@
 // Initiate all routes in this file
 const router = require('express').Router();
-const userRoute = require('./userRoute');
-const postRoute = require('./postRoute');
-const commentRoute = require('./commentRoute');
+const homeRoutes = require('./homeRoute');
+const userRoutes = require('./userRoute');
+const postRoutes = require('./postRoute');
+const commentRoutes = require('./commentRoute');
 
 
 // Set up routes
-router.use('/users', userRoute);
-router.use('/posts', postRoute);
-router.use('/comments', commentRoute);
+router.use('/', homeRoutes);
+router.use('/api/users', userRoutes);
+router.use('/api/posts', postRoutes);
+router.use('/api/comments', commentRoutes);
 
 // Export the router
 module.exports = router;
