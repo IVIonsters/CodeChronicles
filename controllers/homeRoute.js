@@ -63,7 +63,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             include: [{
                 model: Post,
                 where: {
-                    userId: req.session.user_id,
+                    userId: req.session.userId,
                 },
                 required: false,
             }],
@@ -112,7 +112,7 @@ router.get('/register', (req, res) => {
 router.get('/newPost', withAuth, (req, res) => {
     res.render('newPost', {
         loggedIn: req.session.loggedIn,
-        pageTitle: 'New Post',
+        pageTitle: 'Create New Post',
     });
 });
 

@@ -1,13 +1,18 @@
-document.getElementById('new-post-form').addEventListener('submit', async (event) => {
+let isSubmitting = false;
+
+document.querySelector('.new-post-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const title = document.getElementById('title').value.trim();
-    const postContent = document.getElementById('postContent').value.trim();
+    if (isSubmitting) return;
+    isSubmitting = true;
 
-    if (title && postContent) {
+    const title = document.querySelector('#post-title').value.trim();
+    const post_content = document.querySelector('#post-content').value.trim();
+
+    if (title && post_content) {
         const response = await fetch('/api/posts', {
             method: 'POST',
-            body: JSON.stringify({ title, postContent }),
+            body: JSON.stringify({ title, post_content }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -17,7 +22,9 @@ document.getElementById('new-post-form').addEventListener('submit', async (event
             alert('Error creating post.');
         }
     }
+    isSubmitting = false;
 });
+
 document.getElementById('new-post-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
