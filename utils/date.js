@@ -1,4 +1,4 @@
-function formateDate(date) {
+function formatDate(date) {
     const newDate = new Date(date);
     return newDate.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -7,4 +7,4 @@ function formateDate(date) {
     });
 }
 
-module.exports = { formateDate, }
+module.exports = { formatDate };
