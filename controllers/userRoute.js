@@ -33,23 +33,23 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-        const validatePassword = await userData.checkPassword(req.body.password);
 
-        if (!validatePassword) {
+        const validPassword = await userData.checkPassword(req.body.password);
+
+        if (!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
 
         req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
+            req.session.userId = userData.id;
+            req.session.loggedIn = true;
 
-            res.json({ user: userData, message: 'Login Successful, Welcome!' });
+            res.json({ user: userData, message: 'Login successful, Welcome'});
         });
-    } catch (error) {
-        console.error('Error logging in user: ', error);
-        res.status(500).json(error);
-        
+    } catch (err) {
+        console.error('Error logging in user: ', err);
+        res.status(500).json(err);
     }
 });
 
