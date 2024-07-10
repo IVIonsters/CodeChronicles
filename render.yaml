@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: codechronicles-app
+    env: docker
+    plan: free
+    buildCommand: ""
+    startCommand: npm start
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        value: ${DB_HOST}
+      - key: DB_NAME
+        value: ${DB_NAME}
+      - key: DB_USER
+        value: ${DB_USER}
+      - key: DB_PASSWORD
+        value: ${DB_PASSWORD}
+      - key: SESSION_SECRET
+        value: ${SESSION_SECRET}
+  - type: postgresql
+    name: codechronicles-db
+    plan: free
+    version: 13
