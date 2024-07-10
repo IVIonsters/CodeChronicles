@@ -10,12 +10,14 @@
                     <hr>
                     {{#each posts}}
                     <div class='card mb-3'>
+                        <div id="post-{{id}}" class="post">
                         <div class='card-body'>
                             <h5 class='card-title'>{{this.title}}</h5>
                             <p class='card-text'>{{this.postContent}}</p>
-                            <p class='text-muted'>Posted by {{this.user.username}} on {{this.formattedDate}}</p>
+                            <p class='text-muted'>Posted by {{this.user.username}} on {{this.creationDate}}</p>
                             <a href='/editPost/{{this.id}}' class='btn btn-secondary'>Edit</a>
-                            <button class='btn btn-danger delete-post' data-id='{{this.id}}'>Delete</button>
+                            <button class='btn btn-danger delete-btn' data-id='{{this.id}}'>Delete</button>
+                        </div>
                         </div>
                     </div>
                     {{/each}}
