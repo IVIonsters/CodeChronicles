@@ -12,11 +12,11 @@
 
 ## Description
 
-<p> Note taking application designed to help keep track of thoughts and increase organization.</P>
+<p> CodeChronicles is a tech blog application built with Express, Sequelize, and PostgreSQL. It allows users to create, edit, and delete posts, as well as comment on posts created by others.</P>
 
 ## Languages
 
-* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 * ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
@@ -26,21 +26,22 @@
 
 ## Features
 
-* **Auto-Recall:** Application will automatically call notes from storage on application loading.
-* **Hidden / Save Create Buttons:** Buttons are hidden until text has been input into both fields. 
-* **automatic ID Generation:** USES Npm packages to generate unique ID's for each note.
-* **Logging / Debug Integrated:** Application returns specific errors or faults for each section in the event of an error for easier debugging.
+* **User Authentication:** Secure login and signup using bcrypt and express-session.
+* **Post Management:** Users can create, edit, and delete their posts.
+* **Database Integration:** Uses sequelize with PostgreSQL for data management.
+* **Responsive Design:** Mobile friendly interface.
 
 ## Usage
 
-* npm install to load all necessary packages if running locally, hosting on port 3001.
+* npm install to load all necessary packages if running locally
 * Node server.js to start if running local.
+* Application is setup using docker, can setup from docker image as well.
 
-* [Note-Taker-Live-Via-Render](https://note-taker-ux3z.onrender.com)
+* [CodeChronicles](https://codechronicles-j469.onrender.com/)
 
-* [Note-Taker Repository](https://github.com/IVIonsters/Note-Taker)
+* [CodeChronicles Repository](https://github.com/IVIonsters/CodeChronicles)
 
-* ![SCREENSHOTS GO HERE](./Assets/NoteGIF.gif)
+* ![SCREENSHOTS GO HERE](./public/assets/screencapture-codechronicles-j469-onrender-2024-07-14-22_31_22.png)
 
 
 ## Credits
